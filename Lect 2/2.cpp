@@ -63,11 +63,12 @@ public:
 
 int main() {
     int n;
-    string line;
-    getline(cin, line);
-    n = stoi(line);
+    cin >> n;
+    cin.ignore();
     
     SinglyLinkedList list;
+
+    string line;
     for (int i = 0; i < n; i++) {
         getline(cin, line);
         string op;

@@ -41,15 +41,38 @@ public:
 };
 
 int main() {
+    int n;
+    cin >> n;
+    cin.ignore();
+    
     Queue myQueue;
+    
+    string line;
+    for (int i = 0; i < n; i++) {
+        getline(cin, line);
+        string op;
+        int x;
+        
+        size_t space = line.find(' ');
+        op = line.substr(0, space);
+        
+        if (op == "enqueue") {
+            x = stoi(line.substr(space + 1));
+            myQueue.enqueue(x);
+        } else if (op == "dequeue") {
+            myQueue.dequeue();
+        }
+    }
 
-    myQueue.enqueue(1);
-    myQueue.enqueue(2);
-    myQueue.enqueue(3);
-    myQueue.enqueue(4);
-    myQueue.dequeue();
-    myQueue.dequeue();
-    myQueue.enqueue(5);
+    // myQueue.enqueue(1);
+    // myQueue.enqueue(2);
+    // myQueue.enqueue(3);
+    // myQueue.enqueue(4);
+    // myQueue.dequeue();
+    // myQueue.dequeue();
+    // myQueue.enqueue(5);
+    // myQueue.printQueue();
+    
     myQueue.printQueue();
 
     return 0;
