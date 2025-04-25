@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_N = 105;
-const int MAX_X = 10005;
+const int MAX_N = 1000;
+const int MAX_X = 10000;
 
 int n, X;
 int weight[MAX_N], value[MAX_N];
