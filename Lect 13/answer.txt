@@ -1,0 +1,52 @@
+Bài 1:
+Matches:
+1. <an xml tag>
+3. </closetag>
+5. <with attribute=”77”>
+
+Regex /<[^>]+>/ khớp với chuỗi bắt đầu bằng dấu <, kết thúc bằng dấu >, và ko chứa dấu > ở giữa. 
+Điều kiện là giữa < và > phải có ít nhất một ký tự và ko được có dấu > bên trong. Vì vậy, chuỗi <> bị loại vì ko có ký tự nào ở giữa. 
+Chuỗi <opentag> <closetag> ko khớp vì có hai cặp thẻ trong cùng một chuỗi, làm regex chỉ khớp được đến dấu > đầu tiên.
+
+Bài 2:
+Matches:
+1. abc
+2. abbbbbbbb
+3. azc
+4. abcbcbcbc
+6. azccbbbbcbccc
+
+Regex /a.[bc]+/ khớp với chuỗi bắt đầu bằng a, tiếp theo là ký tự bất kỳ, và sau đó là ít nhất một ký tự b hoặc c. 
+Chuỗi ac bị sai vì thiếu ký tự đứng giữa a và nhóm [bc]+.
+
+Bài 3:
+Matches:
+3. very very fat ugly man
+4. very very very tall man
+
+Regex /(very )+(fat)?(tall|ugly) man/ yêu cầu phải có ít nhất một lần từ "very", sau đó có thể có hoặc ko từ "fat",
+rồi bắt buộc phải có từ "tall" hoặc "ugly", và cuối cùng là từ "man". Các chuỗi còn lại ko hợp lệ do thiếu "very" hoặc thiếu "tall/ugly".
+
+Bài 4:
+Regex:
+^.{3}\..{3}\..{3}\..{3}$
+
+Regex này dùng để khớp với chuỗi có định dạng gồm bốn nhóm, mỗi nhóm ba ký tự, ngăn cách nhau bởi dấu chấm. 
+Cụ thể, .{3} nghĩa là ba ký tự bất kỳ, \. là dấu chấm đúng nghĩa, và dấu ^ $ đảm bảo rằng toàn bộ chuỗi phải đúng định dạng từ đầu đến cuối, ko dư ký tự nào.
+
+Bài 5:
+Regex:
+^(\(\d{3}\)|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$
+
+Regex này khớp với nhiều định dạng số điện thoại thông dụng. Ba chữ số đầu tiên có thể nằm trong ngoặc hoặc ko,
+sau đó là ba chữ số tiếp theo và bốn chữ số cuối, có thể được phân cách bằng dấu cách, dấu chấm, hoặc dấu gạch ngang. 
+Các dấu phân cách đều là tùy chọn, nên những định dạng ko có dấu phân cách như 1234567899 vẫn hợp lệ.
+
+Bài 6:
+Regex:
+^[a-zA-Z0-9]+([ _-][a-zA-Z0-9]+)*$
+
+Regex này yêu cầu chuỗi bắt đầu và kết thúc bằng ký tự chữ hoặc số. Các ký tự phân cách như khoảng trắng, dấu gạch ngang, 
+hoặc gạch dưới chỉ được phép nằm giữa hai cụm ký tự chữ/số và ko được đứng liên tiếp. 
+Điều này đảm bảo rằng chuỗi ko có các lỗi định dạng như bắt đầu bằng dấu phân cách hoặc có nhiều dấu phân cách liền nhau. 
+Các chuỗi như hello-world, abc_def, abc def đều hợp lệ, trong khi -abc, abc--def hoặc abc- thì ko.
